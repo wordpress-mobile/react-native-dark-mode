@@ -49,14 +49,15 @@ static RNDarkMode *currentManager = NULL;
 
 + (NSString *)getCurrentMode
 {
-	if (@available(iOS 13.0, *)) { // TODO: Remove when simulator bug is fixed
+#if __IPHONE_13_0 // TODO: Remove when simulator bug is fixed
+	if (@available(iOS 13.0, *)) {
 		static BOOL hasRun = NO;
 		if (!hasRun) {
 			[UIScreen parseCurrentTraitCollection:UITraitCollection.currentTraitCollection];
 			hasRun = YES;
 		}
 	}
-
+#endif
 	return [UIScreen parseCurrentMode];
 }
 
