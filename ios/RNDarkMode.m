@@ -55,6 +55,11 @@ RCT_EXPORT_MODULE();
 	hasListeners = NO;
 }
 
+- (void)invalidate
+{
+	[UIScreen setCurrentManager:nil];
+}
+
 + (BOOL)requiresMainQueueSetup
 {
 	return YES;
